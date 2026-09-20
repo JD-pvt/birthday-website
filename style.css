@@ -1,118 +1,390 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
+/* =========================
+   PAGE BACKGROUND
+   ========================= */
 
+* {
+  box-sizing: border-box;
+}
 
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-size: 1000px;
-  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
-  background-position: center center;
+  /* White graph-paper background */
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(#e8e8e8 1px, transparent 1px),
+    linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+  background-size: 25px 25px;
 }
+
+
+/* =========================
+   ALL PAPERS
+   ========================= */
 
 .paper {
-  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
-  background-size: 500px;
-  background-position: center center;
-  padding: 20px 100px;
-/*  min-width: 800px; */
-  
-  transform: rotateZ(-5deg);
-  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
-  
   position: absolute;
+
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(#eeeeee 1px, transparent 1px),
+    linear-gradient(90deg, #eeeeee 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  padding: 25px 35px;
+
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  box-shadow:
+    3px 8px 15px rgba(0, 0, 0, 0.22),
+    0 2px 4px rgba(0, 0, 0, 0.10);
+
+  user-select: none;
+  touch-action: none;
+
+  z-index: 1;
 }
 
-.paper.heart {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  padding: 0;
-  border-radius: 50%;
+
+/* =========================
+   HANDWRITTEN TEXT
+   ========================= */
+
+p {
+  margin: 8px 0;
+
+  font-family: 'Zeyada', cursive;
+  font-size: 30px;
+  line-height: 1.05;
+
+  color: rgb(139, 30, 30);
+
+  opacity: 0.95;
+
+  user-select: none;
 }
+
+
+/* =========================
+   IMAGE PAPERS
+   ========================= */
 
 .paper.image {
-  padding: 10px;
-}
-.paper.image p {
-  font-size: 30px;
+  padding: 25px;
+  text-align: center;
 }
 
-img {
-  max-height: 200px;
-  width: 100%;
+.paper.image p {
+  font-size: 25px;
+}
+
+.paper.image img {
+  display: block;
+
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 330px;
+
+  margin: 10px auto;
+
+  object-fit: contain;
+
   user-select: none;
+  pointer-events: none;
+}
+
+
+/* =========================
+   HEART
+   ========================= */
+
+.paper.heart {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  background-color: #ffffff;
+
+  z-index: 1;
 }
 
 .paper.heart::after {
   content: "";
-  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+
+  position: absolute;
+
   width: 100%;
   height: 100%;
-  position: absolute;
+
   top: 0;
   left: 0;
-  background-size: 150px;
-  background-position: center center;
+
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+
+  background-size: 130px;
+  background-position: center;
   background-repeat: no-repeat;
-  opacity: 1;
+
+  opacity: 0.75;
 }
 
-p 
-{
-  font-family: 'Zeyada';
-  font-size: 20px;
-  color: rgb(138, 29, 29);
-  opacity: 1;
-  user-select: none;
-  
-  // filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
+
+/* =========================
+   RED MESSAGE PAPER
+   ========================= */
+
+.paper.red {
+  background-color: #fffdfd;
+
+  background-image:
+    linear-gradient(#f0e6e6 1px, transparent 1px),
+    linear-gradient(90deg, #f0e6e6 1px, transparent 1px);
+
+  background-size: 20px 20px;
+}
+
+.paper.red p {
+  color: rgb(139, 30, 30);
+}
+
+
+/* =========================
+   PAPER POSITIONS
+   ========================= */
+
+/* Heart */
+.paper.heart {
+  left: 5%;
+  top: 8%;
+  transform: rotate(-8deg);
+}
+
+/* Handmade gifts */
+#paper10 {
+  width: 330px;
+  min-height: 180px;
+
+  left: 9%;
+  top: 10%;
+
+  transform: rotate(5deg);
+}
+
+/* Photo 5 */
+#paper8 {
+  width: 350px;
+
+  left: 12%;
+  top: 55%;
+
+  transform: rotate(-7deg);
+}
+
+/* Photo 6 */
+#paper9 {
+  width: 350px;
+
+  right: 10%;
+  top: 7%;
+
+  transform: rotate(6deg);
+}
+
+
+/* Main birthday poem */
+#paper0 {
+  width: 600px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%) rotate(-2deg);
+
+  padding: 30px 40px;
 }
 
 #paper0 p {
-  font-size: 20px;
-}
-
-#paper1 p {
-  font-size: 20px;
-}
-
-#paper2 p {
   font-size: 25px;
 }
 
-#paper3 p {
-  font-size: 25px;
+
+/* Photo 1 */
+#paper1 {
+  width: 370px;
+
+  left: 3%;
+  top: 30%;
+
+  transform: rotate(-6deg);
 }
 
-#paper4 p {
-  font-size: 25px;
+
+/* Photo 2 */
+#paper2 {
+  width: 360px;
+
+  right: 3%;
+  top: 34%;
+
+  transform: rotate(7deg);
+}
+
+
+/* Photo 3 */
+#paper3 {
+  width: 370px;
+
+  left: 23%;
+  bottom: 5%;
+
+  transform: rotate(5deg);
+}
+
+
+/* Photo 4 */
+#paper4 {
+  width: 370px;
+
+  right: 20%;
+  bottom: 4%;
+
+  transform: rotate(-6deg);
+}
+
+
+/* Long red birthday message */
+#paper5 {
+  width: 480px;
+
+  left: 50%;
+  bottom: 7%;
+
+  transform: translateX(-50%) rotate(3deg);
 }
 
 #paper5 p {
-  font-size: 25px;
+  font-size: 27px;
+}
+
+
+/* Happy birthday */
+#paper6 {
+  width: 430px;
+
+  right: 12%;
+  bottom: 15%;
+
+  transform: rotate(-3deg);
 }
 
 #paper6 p {
-  font-size: 30px;
+  font-size: 32px;
+}
+
+
+/* Drag instruction */
+#paper7 {
+  width: 300px;
+
+  right: 4%;
+  bottom: 3%;
+
+  transform: rotate(5deg);
 }
 
 #paper7 p {
-  font-size: 50px;
+  font-size: 27px;
 }
 
-#paper8 p {
-  font-size: 50px;
+
+/* =========================
+   DESKTOP
+   ========================= */
+
+@media (min-width: 1200px) {
+
+  #paper1 {
+    left: 3%;
+    top: 32%;
+  }
+
+  #paper2 {
+    right: 3%;
+    top: 32%;
+  }
+
+  #paper3 {
+    left: 24%;
+    bottom: 3%;
+  }
+
+  #paper4 {
+    right: 20%;
+    bottom: 3%;
+  }
 }
 
-#paper9 p {
-  font-size: 50px;
-}
 
-#paper10 p {
-  font-size: 50px;
+/* =========================
+   SMALLER SCREENS
+   ========================= */
+
+@media (max-width: 900px) {
+
+  body {
+    overflow: auto;
+    min-height: 100vh;
+  }
+
+  .paper {
+    max-width: 80vw;
+  }
+
+  p {
+    font-size: 23px;
+  }
+
+  #paper0 {
+    width: 80vw;
+  }
+
+  #paper1,
+  #paper2,
+  #paper3,
+  #paper4,
+  #paper8,
+  #paper9 {
+    width: 70vw;
+  }
+
+  #paper5,
+  #paper6 {
+    width: 75vw;
+  }
+
+  #paper10,
+  #paper7 {
+    width: 65vw;
+  }
 }
