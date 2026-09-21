@@ -12,8 +12,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00a5ff !important;
-  background-image: url('bg.jpeg');
+  
+  background-image: url('images/bg.jpeg') !important;
   background-size: cover;
   background-position: center;
 }
