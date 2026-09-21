@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #7e5858;
+  background-color:#D5A6BD;
   background-image: url('images/bg.jpeg');
   background-size: cover;
   background-position: center;
@@ -22,7 +22,7 @@ body {
   position: absolute;
   width: 300px;
   padding: 20px;
-  background-color: #fffef0 !important; /* Forces solid paper background */
+  background-color: #e5decf !important; /* Forces solid paper background */
   background-image: url('images/paper.webp');
   background-size: 100% 100%;
   box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.4);
