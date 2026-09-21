@@ -1,376 +1,118 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
-/* =========================
-   BASIC SETUP
-========================= */
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 
-/* =========================
-   BACKGROUND
-========================= */
 
 body {
-  width: 100%;
   height: 100vh;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  overflow: hidden;
-  position: relative;
-
-  background-color: white;
+  background-size: 1000px;
+  background-image: url(images/bg.jpeg);
+  background-position: center center;
 }
-
-
-/* =========================
-   PAPERS
-========================= */
 
 .paper {
+  background-image: url(images/paper.webp);
+  background-size: 500px;
+  background-position: center center;
+  padding: 20px 100px;
+/*  min-width: 800px; */
+  
+  transform: rotateZ(-5deg);
+  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
+  
   position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: auto;
-  min-height: 100px;
-
-  /* YOUR LOCAL PAPER IMAGE */
-  background-image: url("./images/paper.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-
-  padding: 20px 40px;
-
-  box-shadow:
-    2px 10px 20px rgba(0, 0, 0, 0.35);
-
-  --x: 0px;
-  --y: 0px;
-
-  transform:
-    translate(
-      calc(-50% + var(--x)),
-      calc(-50% + var(--y))
-    );
-
-  touch-action: none;
-  user-select: none;
-  cursor: grab;
 }
-
-.paper:active {
-  cursor: grabbing;
-}
-
-
-/* =========================
-   TEXT
-========================= */
-
-p {
-  margin: 8px 0;
-
-  font-family: 'Zeyada', cursive;
-
-  font-size: 30px;
-  line-height: 1.05;
-
-  color: rgb(139, 30, 30);
-
-  opacity: 0.90;
-
-  user-select: none;
-}
-
-
-/* =========================
-   IMAGE PAPERS
-========================= */
-
-.paper.image {
-  padding: 20px;
-
-  text-align: center;
-
-  width: 400px;
-}
-
-.paper.image p {
-  font-size: 27px;
-}
-
-.paper.image img {
-  display: block;
-
-  width: auto;
-  max-width: 100%;
-  max-height: 330px;
-  height: auto;
-
-  margin: 10px auto;
-
-  object-fit: contain;
-
-  pointer-events: none;
-  user-select: none;
-}
-
-
-/* =========================
-   NORMAL TEXT PAPERS
-========================= */
-
-#paper5 {
-  width: 520px;
-  padding: 30px 40px;
-}
-
-#paper5 p {
-  font-size: 27px;
-}
-
-
-#paper6 {
-  width: 450px;
-  padding: 30px 40px;
-}
-
-#paper6 p {
-  font-size: 32px;
-}
-
-
-#paper7 {
-  width: 320px;
-  padding: 25px 35px;
-}
-
-#paper7 p {
-  font-size: 28px;
-}
-
-
-#paper10 {
-  width: 350px;
-}
-
-
-/* =========================
-   INITIAL STACKING ORDER
-   TOP → BOTTOM
-
-   paper7
-   paper6
-   paper5
-   paper4
-   paper3
-   paper2
-   paper1
-   paper0
-   paper10
-   paper8
-   paper9
-   heart
-========================= */
 
 .paper.heart {
-  z-index: 1;
-}
-
-#paper9 {
-  z-index: 2;
-}
-
-#paper8 {
-  z-index: 3;
-}
-
-#paper10 {
-  z-index: 4;
-}
-
-#paper0 {
-  z-index: 5;
-}
-
-#paper1 {
-  z-index: 6;
-}
-
-#paper2 {
-  z-index: 7;
-}
-
-#paper3 {
-  z-index: 8;
-}
-
-#paper4 {
-  z-index: 9;
-}
-
-#paper5 {
-  z-index: 10;
-}
-
-#paper6 {
-  z-index: 11;
-}
-
-#paper7 {
-  z-index: 12;
-}
-
-
-/* =========================
-   HEART
-========================= */
-
-.paper.heart {
+  position: relative;
   width: 200px;
   height: 200px;
-
   padding: 0;
-
   border-radius: 50%;
+}
 
-  background-image: url("images/paper.webp");
-  background-size: 500px;
-  background-position: center;
-  background-repeat: repeat;
+.paper.image {
+  padding: 10px;
+}
+.paper.image p {
+  font-size: 30px;
+}
+
+img {
+  max-height: 200px;
+  width: 100%;
+  user-select: none;
 }
 
 .paper.heart::after {
   content: "";
-
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
+  background-image: url(images/heart.webp);
   width: 100%;
   height: 100%;
-
-  background-image: url("images/heart.webp");
-
+  position: absolute;
+  top: 0;
+  left: 0;
   background-size: 150px;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
-
-  opacity: 0.75;
+  opacity: 1;
 }
 
+p 
+{
+  font-family: 'Zeyada';
+  font-size: 20px;
+  color: rgb(138, 29, 29);
+  opacity: 1;
+  user-select: none;
+  
+  // filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
+}
 
-/* =========================
-   PHONE
-========================= */
+#paper0 p {
+  font-size: 20px;
+}
 
-@media (max-width: 600px) {
+#paper1 p {
+  font-size: 20px;
+}
 
-  .paper {
-    max-width: 90vw;
-    padding: 15px 20px;
-  }
+#paper2 p {
+  font-size: 25px;
+}
 
-  p {
-    font-size: 20px;
-  }
+#paper3 p {
+  font-size: 25px;
+}
 
+#paper4 p {
+  font-size: 25px;
+}
 
-  /* IMAGE PAPERS */
+#paper5 p {
+  font-size: 25px;
+}
 
-  .paper.image {
-    width: 80vw;
-    padding: 12px;
-  }
+#paper6 p {
+  font-size: 30px;
+}
 
-  .paper.image p {
-    font-size: 18px;
-  }
+#paper7 p {
+  font-size: 50px;
+}
 
-  .paper.image img {
-    max-height: 240px;
-  }
+#paper8 p {
+  font-size: 50px;
+}
 
+#paper9 p {
+  font-size: 50px;
+}
 
-  /* PAPER 0 */
-
-  #paper0 {
-    width: 85vw;
-    padding: 20px;
-  }
-
-  #paper0 p {
-    font-size: 17px;
-  }
-
-
-  /* PAPER 5 */
-
-  #paper5 {
-    width: 85vw;
-    padding: 20px;
-  }
-
-  #paper5 p {
-    font-size: 18px;
-  }
-
-
-  /* PAPER 6 */
-
-  #paper6 {
-    width: 80vw;
-    padding: 20px;
-  }
-
-  #paper6 p {
-    font-size: 22px;
-  }
-
-
-  /* PAPER 7 */
-
-  #paper7 {
-    width: 65vw;
-    padding: 18px;
-  }
-
-  #paper7 p {
-    font-size: 19px;
-  }
-
-
-  /* PAPER 10 */
-
-  #paper10 {
-    width: 65vw;
-  }
-
-
-  /* HEART */
-
-  .paper.heart {
-    width: 130px;
-    height: 130px;
-  }
-
-  .paper.heart::after {
-    background-size: 95px;
-  }
-
+#paper10 p {
+  font-size: 50px;
 }
