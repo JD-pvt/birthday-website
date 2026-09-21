@@ -3,6 +3,11 @@
 * {
   box-sizing: border-box;
 }
+body {
+    background-size: cover;
+    background-color: #ead1dc !important;
+    
+}
 
 body {
   height: 100vh;
