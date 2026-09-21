@@ -1,372 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
-/* =========================
-   BASIC SETUP
-========================= */
-
 * {
   box-sizing: border-box;
 }
 
-html,
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-body {
-  width: 100%;
   height: 100vh;
+  width: 100vw;
   margin: 0;
-  padding: 0;
-
   overflow: hidden;
-  position: relative;
-
-  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  background-image: url('bg.jpeg');
+  background-size: cover;
+  background-position: center;
 }
-
-
-/* =========================
-   PAPERS
-========================= */
 
 .paper {
   position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  background-image: url("images/paper.webp");
-  background-size: 500px;
-  background-position: center;
-  background-repeat: repeat;
-
-  padding: 20px 40px;
-
-  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.35);
-
-  --x: 0px;
-  --y: 0px;
-
-  transform:
-    translate(
-      calc(-50% + var(--x)),
-      calc(-50% + var(--y))
-    );
-
-  touch-action: none;
+  width: 300px;
+  padding: 20px;
+  background-color: #fffef0 !important; /* Forces solid paper background */
+  background-image: url('paper.webp');
+  background-size: 100% 100%;
+  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
   user-select: none;
-
   cursor: grab;
 }
 
-.paper:active {
-  cursor: grabbing;
+.paper.heart {
+  width: 150px;
+  height: 150px;
+  padding: 0;
+  border-radius: 50%;
 }
-
-
-/* =========================
-   TEXT
-========================= */
-
-p {
-  margin: 8px 0;
-
-  font-family: 'Zeyada', cursive;
-
-  font-size: 30px;
-  line-height: 1.05;
-
-  color: rgb(139, 30, 30);
-
-  opacity: 0.90;
-
-  user-select: none;
-}
-
-
-/* =========================
-   IMAGE PAPERS
-========================= */
 
 .paper.image {
-  padding: 20px;
-
-  text-align: center;
-
-  width: 400px;
+  width: 280px;
+  padding: 15px;
 }
 
-.paper.image p {
-  font-size: 27px;
-}
-
-.paper.image img {
-  display: block;
-
-  width: auto;
-  max-width: 100%;
-  max-height: 330px;
+img {
+  width: 100%;
   height: auto;
-
-  margin: 10px auto;
-
-  object-fit: contain;
-
-  pointer-events: none;
+  max-height: 200px;
+  object-fit: cover;
   user-select: none;
-}
-
-
-/* =========================
-   NORMAL TEXT PAPERS
-========================= */
-
-#paper5 {
-  width: 520px;
-  padding: 30px 40px;
-}
-
-#paper5 p {
-  font-size: 27px;
-}
-
-
-#paper6 {
-  width: 450px;
-  padding: 30px 40px;
-}
-
-#paper6 p {
-  font-size: 32px;
-}
-
-
-#paper7 {
-  width: 320px;
-  padding: 25px 35px;
-}
-
-#paper7 p {
-  font-size: 28px;
-}
-
-
-#paper10 {
-  width: 350px;
-}
-
-
-/* =========================
-   INITIAL STACKING ORDER
-   TOP → BOTTOM
-
-   paper7
-   paper6
-   paper5
-   paper4
-   paper3
-   paper2
-   paper1
-   paper0
-   paper10
-   paper8
-   paper9
-   heart
-========================= */
-
-.paper.heart {
-  z-index: 1;
-}
-
-#paper9 {
-  z-index: 2;
-}
-
-#paper8 {
-  z-index: 3;
-}
-
-#paper10 {
-  z-index: 4;
-}
-
-#paper0 {
-  z-index: 5;
-}
-
-#paper1 {
-  z-index: 6;
-}
-
-#paper2 {
-  z-index: 7;
-}
-
-#paper3 {
-  z-index: 8;
-}
-
-#paper4 {
-  z-index: 9;
-}
-
-#paper5 {
-  z-index: 10;
-}
-
-#paper6 {
-  z-index: 11;
-}
-
-#paper7 {
-  z-index: 12;
-}
-
-
-/* =========================
-   HEART
-========================= */
-
-.paper.heart {
-  width: 200px;
-  height: 200px;
-
-  padding: 0;
-
-  border-radius: 50%;
-
-  background-image: url("images/paper.webp");
-  background-size: 500px;
-  background-position: center;
-  background-repeat: repeat;
+  pointer-events: none;
+  border: 1px solid #ccc;
 }
 
 .paper.heart::after {
   content: "";
-
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
+  background-image: url('heart.webp');
   width: 100%;
   height: 100%;
-
-  background-image: url("images/heart.webp");
-
-  background-size: 150px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 100px;
   background-position: center;
   background-repeat: no-repeat;
-
-  opacity: 0.75;
 }
 
-
-/* =========================
-   PHONE
-========================= */
-
-@media (max-width: 600px) {
-
-  .paper {
-    max-width: 90vw;
-    padding: 15px 20px;
-  }
-
-  p {
-    font-size: 20px;
-  }
-
-
-  /* IMAGE PAPERS */
-
-  .paper.image {
-    width: 80vw;
-    padding: 12px;
-  }
-
-  .paper.image p {
-    font-size: 18px;
-  }
-
-  .paper.image img {
-    max-height: 240px;
-  }
-
-
-  /* PAPER 0 */
-
-  #paper0 {
-    width: 85vw;
-    padding: 20px;
-  }
-
-  #paper0 p {
-    font-size: 17px;
-  }
-
-
-  /* PAPER 5 */
-
-  #paper5 {
-    width: 85vw;
-    padding: 20px;
-  }
-
-  #paper5 p {
-    font-size: 18px;
-  }
-
-
-  /* PAPER 6 */
-
-  #paper6 {
-    width: 80vw;
-    padding: 20px;
-  }
-
-  #paper6 p {
-    font-size: 22px;
-  }
-
-
-  /* PAPER 7 */
-
-  #paper7 {
-    width: 65vw;
-    padding: 18px;
-  }
-
-  #paper7 p {
-    font-size: 19px;
-  }
-
-
-  /* PAPER 10 */
-
-  #paper10 {
-    width: 65vw;
-  }
-
-
-  /* HEART */
-
-  .paper.heart {
-    width: 130px;
-    height: 130px;
-  }
-
-  .paper.heart::after {
-    background-size: 95px;
-  }
-
+p {
+  font-family: 'Zeyada', cursive;
+  font-size: 20px;
+  line-height: 1.2;
+  color: rgb(138, 29, 29);
+  text-align: center;
+  user-select: none;
+  margin: 6px 0;
 }
+
+/* Positions each paper in different spots on the screen */
+#paper0 { top: 15%; left: 10%; width: 340px; transform: rotate(-3deg); }
+#paper1 { top: 20%; left: 55%; transform: rotate(4deg); }
+#paper2 { top: 40%; left: 15%; transform: rotate(-5deg); }
+#paper3 { top: 50%; left: 50%; transform: rotate(2deg); }
+#paper4 { top: 25%; left: 35%; transform: rotate(-2deg); }
+#paper5 { top: 30%; left: 65%; transform: rotate(6deg); }
+#paper6 { top: 60%; left: 20%; transform: rotate(-4deg); }
+#paper7 { top: 35%; left: 40%; transform: rotate(1deg); z-index: 100; }
+#paper8 { top: 5%; left: 45%; transform: rotate(-6deg); }
+#paper9 { top: 55%; left: 35%; transform: rotate(3deg); }
+#paper10 { top: 10%; left: 25%; transform: rotate(-1deg); }
+
+#paper0 p { font-size: 16px; }
+#paper7 p { font-size: 32px; font-weight: bold; }
