@@ -1,9 +1,9 @@
-/* TEST NEW CSS */
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
-/* =========================
-   PAGE BACKGROUND
-   ========================= */
+
+/* =========================================
+   BASIC SETUP
+   ========================================= */
 
 * {
   box-sizing: border-box;
@@ -11,381 +11,446 @@
 
 html,
 body {
-  margin: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+
+/* =========================================
+   BACKGROUND
+   ========================================= */
 
 body {
-  min-height: 100vh;
+
+  width: 100%;
+  height: 100vh;
+
   overflow: hidden;
+
   position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url("images/bg.jpeg");
 
-  /* White graph-paper background */
-  background-color: #ffffff;
-  background-image:
-    linear-gradient(#e8e8e8 1px, transparent 1px),
-    linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
-  background-size: 25px 25px;
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
 }
 
 
-/* =========================
-   ALL PAPERS
-   ========================= */
+/* =========================================
+   PAPERS
+   ========================================= */
 
 .paper {
+
   position: absolute;
 
-  background-color: #ffffff;
-  background-image:
-    linear-gradient(#eeeeee 1px, transparent 1px),
-    linear-gradient(90deg, #eeeeee 1px, transparent 1px);
-  background-size: 20px 20px;
+  /*
+     EVERY PAPER STARTS AT THE SAME
+     CENTER POSITION
+  */
 
-  padding: 25px 35px;
+  left: 50%;
+  top: 50%;
 
-  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  /*
+     LOCAL PAPER TEXTURE
+  */
+
+  background-image: url("images/paper.webp");
+
+  background-size: 500px;
+
+  background-position: center;
+
+  background-repeat: repeat;
+
+
+  /*
+     PAPER SIZE
+  */
+
+  padding: 20px 40px;
+
+
+  /*
+     SHADOW
+  */
 
   box-shadow:
-    3px 8px 15px rgba(0, 0, 0, 0.22),
-    0 2px 4px rgba(0, 0, 0, 0.10);
+    2px 10px 20px rgba(0, 0, 0, 0.35);
+
+
+  /*
+     IMPORTANT
+
+     JavaScript changes these variables
+     while dragging.
+  */
+
+  --x: 0px;
+  --y: 0px;
+  --rotation: 0deg;
+
+
+  /*
+     Keeps every paper centered initially
+  */
+
+  transform:
+    translate(
+      calc(-50% + var(--x)),
+      calc(-50% + var(--y))
+    )
+    rotateZ(var(--rotation));
+
+
+  /*
+     Allows dragging on PC and phone
+  */
+
+  touch-action: none;
 
   user-select: none;
-  touch-action: none;
+
+  cursor: grab;
 
   z-index: 1;
 }
 
 
-/* =========================
-   HANDWRITTEN TEXT
-   ========================= */
+.paper:active {
+  cursor: grabbing;
+}
+
+
+/* =========================================
+   TEXT
+   ========================================= */
 
 p {
+
   margin: 8px 0;
 
   font-family: 'Zeyada', cursive;
+
   font-size: 30px;
+
   line-height: 1.05;
 
   color: rgb(139, 30, 30);
 
-  opacity: 0.95;
+  opacity: 0.90;
 
   user-select: none;
 }
 
 
-/* =========================
+/* =========================================
    IMAGE PAPERS
-   ========================= */
+   ========================================= */
 
 .paper.image {
-  padding: 25px;
+
+  padding: 20px;
+
   text-align: center;
+
+  width: 400px;
 }
+
 
 .paper.image p {
-  font-size: 25px;
+
+  font-size: 27px;
 }
 
+
 .paper.image img {
+
   display: block;
 
-  max-width: 100%;
   width: auto;
-  height: auto;
+
+  max-width: 100%;
+
   max-height: 330px;
+
+  height: auto;
 
   margin: 10px auto;
 
   object-fit: contain;
 
-  user-select: none;
   pointer-events: none;
+
+  user-select: none;
 }
 
 
-/* =========================
+/* =========================================
+   NORMAL TEXT PAPERS
+   ========================================= */
+
+#paper5 {
+
+  width: 520px;
+
+  padding: 30px 40px;
+}
+
+
+#paper5 p {
+
+  font-size: 27px;
+}
+
+
+#paper6 {
+
+  width: 450px;
+
+  padding: 30px 40px;
+}
+
+
+#paper6 p {
+
+  font-size: 32px;
+}
+
+
+#paper7 {
+
+  width: 320px;
+
+  padding: 25px 35px;
+}
+
+
+#paper7 p {
+
+  font-size: 28px;
+}
+
+
+#paper10 {
+
+  width: 350px;
+}
+
+
+/* =========================================
    HEART
-   ========================= */
+   ========================================= */
 
 .paper.heart {
-  position: absolute;
 
-  width: 180px;
-  height: 180px;
+  width: 200px;
+
+  height: 200px;
 
   padding: 0;
 
   border-radius: 50%;
 
-  background-color: #ffffff;
+  background-image: url("images/paper.webp");
+
+  background-size: 500px;
+
+  background-position: center;
+
+  background-repeat: repeat;
 
   z-index: 1;
 }
 
+
 .paper.heart::after {
+
   content: "";
 
   position: absolute;
 
+  left: 0;
+  top: 0;
+
   width: 100%;
   height: 100%;
 
-  top: 0;
-  left: 0;
+  background-image: url("images/heart.webp");
 
-  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+  background-size: 150px;
 
-  background-size: 130px;
   background-position: center;
+
   background-repeat: no-repeat;
 
   opacity: 0.75;
 }
 
 
-/* =========================
-   RED MESSAGE PAPER
-   ========================= */
+/* =========================================
+   DIFFERENT RANDOM-LOOKING ROTATIONS
+   ========================================= */
 
-.paper.red {
-  background-color: #fffdfd;
+/*
+   These are ONLY rotations.
 
-  background-image:
-    linear-gradient(#f0e6e6 1px, transparent 1px),
-    linear-gradient(90deg, #f0e6e6 1px, transparent 1px);
+   All papers still remain stacked
+   in the same center position.
+*/
 
-  background-size: 20px 20px;
-}
-
-.paper.red p {
-  color: rgb(139, 30, 30);
-}
-
-
-/* =========================
-   PAPER POSITIONS
-   ========================= */
-
-/* Heart */
-.paper.heart {
-  left: 5%;
-  top: 8%;
-  transform: rotate(-8deg);
-}
-
-/* Handmade gifts */
-#paper10 {
-  width: 330px;
-  min-height: 180px;
-
-  left: 9%;
-  top: 10%;
-
-  transform: rotate(5deg);
-}
-
-/* Photo 5 */
-#paper8 {
-  width: 350px;
-
-  left: 12%;
-  top: 55%;
-
-  transform: rotate(-7deg);
-}
-
-/* Photo 6 */
 #paper9 {
-  width: 350px;
-
-  right: 10%;
-  top: 7%;
-
-  transform: rotate(6deg);
+  --rotation: -7deg;
 }
 
+#paper8 {
+  --rotation: 6deg;
+}
 
-/* Main birthday poem */
+#paper10 {
+  --rotation: -4deg;
+}
+
 #paper0 {
-  width: 600px;
-
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%) rotate(-2deg);
-
-  padding: 30px 40px;
+  --rotation: 2deg;
 }
 
-#paper0 p {
-  font-size: 25px;
-}
-
-
-/* Photo 1 */
 #paper1 {
-  width: 370px;
-
-  left: 3%;
-  top: 30%;
-
-  transform: rotate(-6deg);
+  --rotation: -6deg;
 }
 
-
-/* Photo 2 */
 #paper2 {
-  width: 360px;
-
-  right: 3%;
-  top: 34%;
-
-  transform: rotate(7deg);
+  --rotation: 5deg;
 }
 
-
-/* Photo 3 */
 #paper3 {
-  width: 370px;
-
-  left: 23%;
-  bottom: 5%;
-
-  transform: rotate(5deg);
+  --rotation: -3deg;
 }
 
-
-/* Photo 4 */
 #paper4 {
-  width: 370px;
-
-  right: 20%;
-  bottom: 4%;
-
-  transform: rotate(-6deg);
+  --rotation: 7deg;
 }
 
-
-/* Long red birthday message */
 #paper5 {
-  width: 480px;
-
-  left: 50%;
-  bottom: 7%;
-
-  transform: translateX(-50%) rotate(3deg);
+  --rotation: -5deg;
 }
 
-#paper5 p {
-  font-size: 27px;
-}
-
-
-/* Happy birthday */
 #paper6 {
-  width: 430px;
-
-  right: 12%;
-  bottom: 15%;
-
-  transform: rotate(-3deg);
+  --rotation: 4deg;
 }
 
-#paper6 p {
-  font-size: 32px;
-}
-
-
-/* Drag instruction */
 #paper7 {
-  width: 300px;
-
-  right: 4%;
-  bottom: 3%;
-
-  transform: rotate(5deg);
+  --rotation: -2deg;
 }
 
-#paper7 p {
-  font-size: 27px;
+.paper.heart {
+  --rotation: -8deg;
 }
 
 
-/* =========================
-   DESKTOP
-   ========================= */
+/* =========================================
+   PHONE
+   ========================================= */
 
-@media (min-width: 1200px) {
-
-  #paper1 {
-    left: 3%;
-    top: 32%;
-  }
-
-  #paper2 {
-    right: 3%;
-    top: 32%;
-  }
-
-  #paper3 {
-    left: 24%;
-    bottom: 3%;
-  }
-
-  #paper4 {
-    right: 20%;
-    bottom: 3%;
-  }
-}
-
-
-/* =========================
-   SMALLER SCREENS
-   ========================= */
-
-@media (max-width: 900px) {
-
-  body {
-    overflow: auto;
-    min-height: 100vh;
-  }
+@media (max-width: 600px) {
 
   .paper {
-    max-width: 80vw;
+    max-width: 90vw;
+
+    padding: 15px 20px;
   }
+
 
   p {
-    font-size: 23px;
+    font-size: 20px;
   }
+
+
+  .paper.image {
+    width: 80vw;
+
+    padding: 12px;
+  }
+
+
+  .paper.image p {
+    font-size: 18px;
+  }
+
+
+  .paper.image img {
+    max-height: 240px;
+  }
+
 
   #paper0 {
-    width: 80vw;
+    width: 85vw;
+
+    padding: 20px;
   }
 
-  #paper1,
-  #paper2,
-  #paper3,
-  #paper4,
-  #paper8,
-  #paper9 {
-    width: 70vw;
+
+  #paper0 p {
+    font-size: 17px;
   }
 
-  #paper5,
+
+  #paper5 {
+    width: 85vw;
+
+    padding: 20px;
+  }
+
+
+  #paper5 p {
+    font-size: 18px;
+  }
+
+
   #paper6 {
-    width: 75vw;
+    width: 80vw;
+
+    padding: 20px;
   }
 
-  #paper10,
+
+  #paper6 p {
+    font-size: 22px;
+  }
+
+
   #paper7 {
     width: 65vw;
+
+    padding: 18px;
+  }
+
+
+  #paper7 p {
+    font-size: 19px;
+  }
+
+
+  #paper10 {
+    width: 65vw;
+  }
+
+
+  .paper.heart {
+    width: 130px;
+
+    height: 130px;
+  }
+
+
+  .paper.heart::after {
+    background-size: 95px;
   }
 }
