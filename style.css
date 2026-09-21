@@ -82,17 +82,14 @@ p {
 }
 
 /* Positions each paper in different spots on the screen */
-#paper0 { top: 15%; left: 10%; width: 340px; transform: rotate(-3deg); }
-#paper1 { top: 20%; left: 55%; transform: rotate(4deg); }
-#paper2 { top: 40%; left: 15%; transform: rotate(-5deg); }
-#paper3 { top: 50%; left: 50%; transform: rotate(2deg); }
-#paper4 { top: 25%; left: 35%; transform: rotate(-2deg); }
-#paper5 { top: 30%; left: 65%; transform: rotate(6deg); }
-#paper6 { top: 60%; left: 20%; transform: rotate(-4deg); }
-#paper7 { top: 35%; left: 40%; transform: rotate(1deg); z-index: 100; }
-#paper8 { top: 5%; left: 45%; transform: rotate(-6deg); }
-#paper9 { top: 55%; left: 35%; transform: rotate(3deg); }
-#paper10 { top: 10%; left: 25%; transform: rotate(-1deg); }
-
-#paper0 p { font-size: 16px; }
-#paper7 p { font-size: 32px; font-weight: bold; }
+#paper0 p { font-size: 20px; }
+#paper1 p { font-size: 20px; }
+#paper2 p { font-size: 25px; }
+#paper3 p { font-size: 25px; }
+#paper4 p { font-size: 25px; }
+#paper5 p { font-size: 25px; }
+#paper6 p { font-size: 30px; }
+#paper7 p { font-size: 50px; }
+#paper8 p { font-size: 50px; }
+#paper9 p { font-size: 50px; }
+#paper10 p { font-size: 50px; }
