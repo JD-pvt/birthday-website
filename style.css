@@ -12,7 +12,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e5e5e5;
+  background-color: #333;
   background-image: url('bg.jpeg');
   background-size: cover;
   background-position: center;
@@ -20,19 +20,15 @@ body {
 
 .paper {
   position: absolute;
-  width: 320px;
+  width: 300px;
   padding: 20px;
-  background-color: #fcf8ec; /* Solid paper fallback if image fails */
+  background-color: #fffef0 !important; /* Forces solid paper background */
   background-image: url('paper.webp');
   background-size: 100% 100%;
-  background-position: center;
-  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
   user-select: none;
   cursor: grab;
-}
-
-.paper:active {
-  cursor: grabbing;
 }
 
 .paper.heart {
@@ -40,11 +36,10 @@ body {
   height: 150px;
   padding: 0;
   border-radius: 50%;
-  background-size: cover;
 }
 
 .paper.image {
-  width: 300px;
+  width: 280px;
   padding: 15px;
 }
 
@@ -55,7 +50,7 @@ img {
   object-fit: cover;
   user-select: none;
   pointer-events: none;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
 }
 
 .paper.heart::after {
@@ -81,19 +76,18 @@ p {
   margin: 6px 0;
 }
 
-/* Individual Card Offsets & Rotations */
-#paper0 { top: 10%; left: 10%; transform: rotate(-3deg); width: 340px; }
-#paper1 { top: 15%; left: 55%; transform: rotate(4deg); }
-#paper2 { top: 40%; left: 20%; transform: rotate(-5deg); }
+/* Positions each paper in different spots on the screen */
+#paper0 { top: 15%; left: 10%; width: 340px; transform: rotate(-3deg); }
+#paper1 { top: 20%; left: 55%; transform: rotate(4deg); }
+#paper2 { top: 40%; left: 15%; transform: rotate(-5deg); }
 #paper3 { top: 50%; left: 50%; transform: rotate(2deg); }
-#paper4 { top: 20%; left: 35%; transform: rotate(-2deg); }
-#paper5 { top: 30%; left: 60%; transform: rotate(6deg); }
-#paper6 { top: 60%; left: 15%; transform: rotate(-4deg); }
-#paper7 { top: 35%; left: 38%; transform: rotate(1deg); z-index: 10; }
+#paper4 { top: 25%; left: 35%; transform: rotate(-2deg); }
+#paper5 { top: 30%; left: 65%; transform: rotate(6deg); }
+#paper6 { top: 60%; left: 20%; transform: rotate(-4deg); }
+#paper7 { top: 35%; left: 40%; transform: rotate(1deg); z-index: 100; }
 #paper8 { top: 5%; left: 45%; transform: rotate(-6deg); }
-#paper9 { top: 50%; left: 30%; transform: rotate(3deg); }
-#paper10 { top: 25%; left: 15%; transform: rotate(-1deg); }
+#paper9 { top: 55%; left: 35%; transform: rotate(3deg); }
+#paper10 { top: 10%; left: 25%; transform: rotate(-1deg); }
 
-/* Font size adjustments */
 #paper0 p { font-size: 16px; }
 #paper7 p { font-size: 32px; font-weight: bold; }
