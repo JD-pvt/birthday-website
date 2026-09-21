@@ -34,6 +34,7 @@ body {
   border-radius: 2px;
   user-select: none;
   cursor: grab;
+  touch-action: none;
 }
 
 .paper.heart {
