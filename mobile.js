@@ -3,11 +3,8 @@ let highestZ = 1;
 class Paper {
   holdingPaper = false;
 
-  touchStartX = 0;
-  touchStartY = 0;
-
-  prevTouchX = 0;
-  prevTouchY = 0;
+  prevX = 0;
+  prevY = 0;
 
   currentPaperX = 0;
   currentPaperY = 0;
@@ -16,49 +13,58 @@ class Paper {
 
   init(paper) {
 
-    paper.addEventListener("touchstart", (e) => {
-      if (this.holdingPaper) return;
+    // Start dragging
+    paper.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
 
       this.holdingPaper = true;
 
+      // Bring paper to front
       paper.style.zIndex = highestZ;
       highestZ++;
 
-      this.touchStartX = e.touches[0].clientX;
-      this.touchStartY = e.touches[0].clientY;
+      // Remember starting position
+      this.prevX = e.clientX;
+      this.prevY = e.clientY;
 
-      this.prevTouchX = this.touchStartX;
-      this.prevTouchY = this.touchStartY;
-    }, { passive: false });
+      // Keep receiving pointer events even if pointer
+      // moves outside the paper
+      paper.setPointerCapture(e.pointerId);
+    });
 
 
-    paper.addEventListener("touchmove", (e) => {
+    // Dragging
+    paper.addEventListener("pointermove", (e) => {
       if (!this.holdingPaper) return;
 
       e.preventDefault();
 
-      const touchX = e.touches[0].clientX;
-      const touchY = e.touches[0].clientY;
-
-      const moveX = touchX - this.prevTouchX;
-      const moveY = touchY - this.prevTouchY;
+      const moveX = e.clientX - this.prevX;
+      const moveY = e.clientY - this.prevY;
 
       this.currentPaperX += moveX;
       this.currentPaperY += moveY;
 
-      this.prevTouchX = touchX;
-      this.prevTouchY = touchY;
+      this.prevX = e.clientX;
+      this.prevY = e.clientY;
 
       paper.style.transform =
         `translate(${this.currentPaperX}px, ${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
-    }, { passive: false });
-
-
-    paper.addEventListener("touchend", () => {
-      this.holdingPaper = false;
     });
 
-    paper.addEventListener("touchcancel", () => {
+
+    // Stop dragging
+    paper.addEventListener("pointerup", (e) => {
+      this.holdingPaper = false;
+
+      if (paper.hasPointerCapture(e.pointerId)) {
+        paper.releasePointerCapture(e.pointerId);
+      }
+    });
+
+
+    // If the browser cancels the pointer
+    paper.addEventListener("pointercancel", () => {
       this.holdingPaper = false;
     });
   }
