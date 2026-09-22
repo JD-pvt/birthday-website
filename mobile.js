@@ -3,107 +3,69 @@ let highestZ = 1;
 class Paper {
   holdingPaper = false;
 
-  pointerX = 0;
-  pointerY = 0;
+  touchStartX = 0;
+  touchStartY = 0;
 
-  prevPointerX = 0;
-  prevPointerY = 0;
-
-  velX = 0;
-  velY = 0;
-
-  rotation = Math.random() * 30 - 15;
+  prevTouchX = 0;
+  prevTouchY = 0;
 
   currentPaperX = 0;
   currentPaperY = 0;
 
+  rotation = Math.random() * 30 - 15;
+
   init(paper) {
 
-    // -------------------------
-    // POINTER DOWN
-    // -------------------------
-    paper.addEventListener("pointerdown", (e) => {
-
+    paper.addEventListener("touchstart", (e) => {
       if (this.holdingPaper) return;
 
       this.holdingPaper = true;
 
-      // Bring paper to the front
       paper.style.zIndex = highestZ;
       highestZ++;
 
-      // Store starting pointer position
-      this.pointerX = e.clientX;
-      this.pointerY = e.clientY;
+      this.touchStartX = e.touches[0].clientX;
+      this.touchStartY = e.touches[0].clientY;
 
-      this.prevPointerX = e.clientX;
-      this.prevPointerY = e.clientY;
-
-      // Prevent scrolling / other browser gestures
-      paper.setPointerCapture(e.pointerId);
-    });
+      this.prevTouchX = this.touchStartX;
+      this.prevTouchY = this.touchStartY;
+    }, { passive: false });
 
 
-    // -------------------------
-    // POINTER MOVE
-    // -------------------------
-    paper.addEventListener("pointermove", (e) => {
-
+    paper.addEventListener("touchmove", (e) => {
       if (!this.holdingPaper) return;
 
-      // Calculate movement
-      this.pointerX = e.clientX;
-      this.pointerY = e.clientY;
+      e.preventDefault();
 
-      this.velX = this.pointerX - this.prevPointerX;
-      this.velY = this.pointerY - this.prevPointerY;
+      const touchX = e.touches[0].clientX;
+      const touchY = e.touches[0].clientY;
 
-      // Move paper
-      this.currentPaperX += this.velX;
-      this.currentPaperY += this.velY;
+      const moveX = touchX - this.prevTouchX;
+      const moveY = touchY - this.prevTouchY;
 
-      // Remember current position
-      this.prevPointerX = this.pointerX;
-      this.prevPointerY = this.pointerY;
+      this.currentPaperX += moveX;
+      this.currentPaperY += moveY;
 
-      // Apply movement
+      this.prevTouchX = touchX;
+      this.prevTouchY = touchY;
+
       paper.style.transform =
-        `translateX(${this.currentPaperX}px)
-         translateY(${this.currentPaperY}px)
-         rotateZ(${this.rotation}deg)`;
-    });
+        `translate(${this.currentPaperX}px, ${this.currentPaperY}px) rotateZ(${this.rotation}deg)`;
+    }, { passive: false });
 
 
-    // -------------------------
-    // POINTER UP
-    // -------------------------
-    paper.addEventListener("pointerup", (e) => {
-
+    paper.addEventListener("touchend", () => {
       this.holdingPaper = false;
-
-      if (paper.hasPointerCapture(e.pointerId)) {
-        paper.releasePointerCapture(e.pointerId);
-      }
     });
 
-
-    // -------------------------
-    // POINTER CANCEL
-    // -------------------------
-    paper.addEventListener("pointercancel", () => {
+    paper.addEventListener("touchcancel", () => {
       this.holdingPaper = false;
     });
   }
 }
 
 
-// -------------------------
-// INITIALIZE ALL PAPERS
-// -------------------------
-
-const papers = Array.from(
-  document.querySelectorAll(".paper")
-);
+const papers = document.querySelectorAll(".paper");
 
 papers.forEach((paper) => {
   const p = new Paper();
